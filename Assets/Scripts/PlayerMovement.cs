@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
         
-        
+        // Makes you wait midair before you ground pound
         IEnumerator GroundPoundTime(float delay)
         {
             yield return new WaitForSeconds(delay);
@@ -111,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(new Vector2(0, -jumpPower), ForceMode2D.Force);
         }
 
+        // Gives delay to Ground Pound after you jump
         IEnumerator GroundPoundJumpDelay(float delay)
         {
             groundPoundReady = false;

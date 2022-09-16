@@ -1320,8 +1320,9 @@ MonoBehaviour:
   jumpAmount: 2
   gameOver: 0
   isGrounded: 0
-  isAirBash: 0
-  airBashFall: 0
+  groundPoundReady: 0
+  isGroundPound: 0
+  groundPoundFall: 0
 --- !u!61 &1670162883
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1428,7 +1429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1670162881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.24, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
