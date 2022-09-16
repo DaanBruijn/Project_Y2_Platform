@@ -6,31 +6,18 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private float currentMovementSpeed;
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float sprintSpeed;
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float runMultiplier;
     [SerializeField] private float jumpPower;
     [SerializeField] private float maxJumps;
     [SerializeField] private float jumpAmount;
     [SerializeField] private bool gameOver;
-    [SerializeField] private bool isGrounded;
-    [SerializeField] private bool groundPoundReady;
-    [SerializeField] private bool isGroundPound;
-    [SerializeField] private bool groundPoundFall;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Floor")
+        if (collision.gameObject.CompareTag("Floor"))
         {
             jumpAmount = maxJumps;
-            isGrounded = true;
-            if (isGroundPound == true)
-            {
-                isGroundPound = false;
-                groundPoundFall = false;
-                rb.constraints = RigidbodyConstraints2D.None;
-                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            }
         }
     }
 
@@ -45,22 +32,10 @@ public class PlayerMovement : MonoBehaviour
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
 
-        if (gameOver == false && isGroundPound == false)
+        if (gameOver == false)
         {
             // Walking
-            transform.Translate(inputX * currentMovementSpeed * Time.deltaTime, 0, 0);
-
-            // Turning
-            if (inputX < 0)
-            {
-                transform.localScale = new Vector3(-1, 1, 1);
-
-            }
-            else if (inputX > 0)
-            {
-                transform.localScale = new Vector3(1, 1, 1);
-                
-            }
+            transform.Translate(inputX * movementSpeed * Time.deltaTime, 0, 0);
 
             // Jumping
 
@@ -71,51 +46,28 @@ public class PlayerMovement : MonoBehaviour
                     rb.velocity = new Vector3(0, 0, 0);
                     rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Force);
                     jumpAmount = jumpAmount - 1;
-                    isGrounded = false;
-                    StartCoroutine(GroundPoundJumpDelay(0.1f));
                 }
             }
 
             // Sprinting
-            if (isGrounded == true)
+            if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                if (Input.GetKeyDown(KeyCode.LeftShift))
-                {
-                    currentMovementSpeed = sprintSpeed;
-                }
-            }
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                currentMovementSpeed = walkSpeed;
+                movementSpeed = movementSpeed * runMultiplier;
             }
 
-            // Air Bash
-            if (isGrounded == false)
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
             {
-                if (Input.GetKeyDown(KeyCode.S) && groundPoundReady == true)
-                {
-                    currentMovementSpeed = walkSpeed;
-                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
-                    isGroundPound = true;
-                    StartCoroutine(GroundPoundTime(0.3f));
-                }
+                movementSpeed = movementSpeed / runMultiplier;
             }
         }
         
-        
-        IEnumerator GroundPoundTime(float delay)
+        void OnCollisionEnter2D(Collision2D collision)
         {
-            yield return new WaitForSeconds(delay);
-            rb.constraints = RigidbodyConstraints2D.None;
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            rb.AddForce(new Vector2(0, -jumpPower), ForceMode2D.Force);
-        }
+            if (collision.gameObject.tag == "Floor")
+            {
+                jumpAmount = maxJumps;
+            }
 
-        IEnumerator GroundPoundJumpDelay(float delay)
-        {
-            groundPoundReady = false;
-            yield return new WaitForSeconds(delay);
-            groundPoundReady = true;
         }
     }
 }
