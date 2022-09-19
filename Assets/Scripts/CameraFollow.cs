@@ -13,8 +13,14 @@ public class CameraFollow : MonoBehaviour
     
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         transform.position = target.position + offset;
+        
+        // Camera Y postition Fixed
+        if (transform.position.y <= -0.006176025f)
+        {
+            transform.position = new Vector3(transform.position.x, -0.006176025f, transform.position.z);
+        }
     }
 }
