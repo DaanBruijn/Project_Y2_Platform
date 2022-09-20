@@ -45,12 +45,12 @@ public class GameManager : MonoBehaviour
     
     public void PlayAgain()
     {
-        SceneManager.LoadScene("Finn");
+        //load to finn-audio for ease of use (change to main scene later)
+        SceneManager.LoadScene("Finn-audio");
     }
     
     public void Win()
     {
-        Debug.Log("Win");
         SceneManager.LoadScene("Win");
     }
 }
