@@ -5,13 +5,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Rigidbody")]
     [SerializeField] private Rigidbody2D rb;
+    
+    [Header("Movement-Speeds")]
     [SerializeField] private float currentMovementSpeed;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float sprintSpeed;
+    
+    [Header("Jumps")]
     [SerializeField] private float jumpPower;
     [SerializeField] private float maxJumps;
     [SerializeField] private float jumpAmount;
+    
+    [Header("Bools")]
     [SerializeField] private bool gameOver;
     [SerializeField] private bool isGrounded;
     [SerializeField] private bool groundPoundReady;
