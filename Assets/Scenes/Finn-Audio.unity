@@ -3498,8 +3498,8 @@ MonoBehaviour:
   groundPoundReady: 0
   isGroundPound: 0
   groundPoundFall: 0
-  gameManager: {fileID: 1699767472}
-  soundManager: {fileID: 915463972}
+  gameManager: {fileID: 0}
+  soundManager: {fileID: 0}
 --- !u!61 &1250399476
 BoxCollider2D:
   m_ObjectHideFlags: 0
