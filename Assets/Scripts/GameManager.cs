@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public int score = 5;
+    public int time = 5;
 
     public TextMeshProUGUI Scoretext;
     private GameObject textObject;
@@ -52,5 +53,11 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Win");
         SceneManager.LoadScene("Win");
+    }
+
+    public void Restart()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

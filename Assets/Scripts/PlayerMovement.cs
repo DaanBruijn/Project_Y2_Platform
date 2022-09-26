@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool groundPoundReady;
     [SerializeField] private bool isGroundPound;
     [SerializeField] private bool groundPoundFall;
+    [SerializeField] public  bool isPaused;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         float inputX = Input.GetAxis("Horizontal");
         float inputY = Input.GetAxis("Vertical");
 
-        if (gameOver == false && isGroundPound == false)
+        if (gameOver == false && isGroundPound == false && isPaused == false)
         {
             // Walking
             transform.Translate(inputX * currentMovementSpeed * Time.deltaTime, 0, 0);
