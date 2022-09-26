@@ -5,13 +5,18 @@ using UnityEngine;
 public class DieToEnemy : MonoBehaviour
 {
     [SerializeField]private GameManager gameManager;
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) 
+    {        
+        if (collision.gameObject.tag == "Enemy")
         {
-            if (collision.gameObject.tag == "Enemy")
-            {
-                Debug.Log("dead");
-                gameManager.Win();
-            }
-
+            Debug.Log("dead");
+            gameManager.Lose();
         }
+
+        if (collision.gameObject.tag == "Win")
+        {
+            Debug.Log("w");
+            gameManager.Win();
+        }
+    }
 }

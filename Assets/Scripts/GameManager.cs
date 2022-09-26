@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int score = 5;
-
+    public int score;
     public TextMeshProUGUI Scoretext;
     private GameObject textObject;
     
@@ -15,14 +14,15 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         //ScoreSystem
         textObject = GameObject.Find("Scoretext");
         Scoretext = textObject.GetComponent<TextMeshProUGUI>();
-        Scoretext.text = "Score: " + score;
+        Scoretext.text = "Score: " + PlayerPrefs.GetInt("score");
         
         //EndScreen
         Debug.Log("im GameManager");
-        PlayerPrefs.SetInt("score",5);
+        PlayerPrefs.SetInt("score",0);
         PlayerPrefs.SetFloat("time",10.50f);
         PlayerPrefs.SetFloat("iets anders", PlayerPrefs.GetFloat("iets anders") + 1);
     }
@@ -30,11 +30,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            score += 15;
-            Scoretext.text = "Score: " + score;
-        }
+        Scoretext.text = "Score: " + PlayerPrefs.GetInt("score");
+        //Debug.Log(score);
     }
     
     public void LoadNextScene()
@@ -53,4 +50,15 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Win");
     }
+
+    public void Lose()
+    {
+        SceneManager.LoadScene("Lose");
+    }
+
+    public void IncreaseScore(int scoreToAdd)
+        {
+            score += scoreToAdd;
+            PlayerPrefs.SetInt("score", score);
+        }    
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
+
     [Header("Rigidbody")]
     [SerializeField] private Rigidbody2D rb;
     
@@ -24,6 +26,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool groundPoundReady;
     [SerializeField] private bool isGroundPound;
     [SerializeField] private bool groundPoundFall;
+
+    [Header("Managers")]
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private SoundManager soundManager;
 
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -75,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.W))
                 {
+                    soundManager.PlayJumpSound();
                     rb.velocity = new Vector3(0, 0, 0);
                     rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Force);
                     jumpAmount = jumpAmount - 1;

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Win.unity
     guid: bf684fa0d02956d4a9a062a608aff262
+  - enabled: 1
+    path: Assets/Scenes/Finn-Audio.unity
+    guid: 213cda4d94a4c094f95f08462ce84206
   m_configObjects: {}
