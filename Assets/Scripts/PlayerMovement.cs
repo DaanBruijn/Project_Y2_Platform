@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = true;
             if (isGroundPound == true)
             {
+                soundManager.PlayThud();
                 isGroundPound = false;
                 groundPoundFall = false;
                 rb.constraints = RigidbodyConstraints2D.None;
@@ -108,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.S) && groundPoundReady == true)
                 {
+                    soundManager.PlayGroundPound();
                     currentMovementSpeed = walkSpeed;
                     rb.constraints = RigidbodyConstraints2D.FreezeAll;
                     isGroundPound = true;
