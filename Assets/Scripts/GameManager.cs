@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Scoretext.text = "Score: " + score;
+        Scoretext.text = "     " + score;
         if (Input.GetKeyDown(KeyCode.K))
         {
             score += 15;
