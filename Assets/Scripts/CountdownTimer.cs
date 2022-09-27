@@ -23,7 +23,7 @@ public class CountdownTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Timeleft.text = "Time: " + Mathf.Round(timeLeft);
+        Timeleft.text = "     " + Mathf.Round(timeLeft);
         if (Input.GetKeyDown(KeyCode.P))
         {
             if (onGoing)
