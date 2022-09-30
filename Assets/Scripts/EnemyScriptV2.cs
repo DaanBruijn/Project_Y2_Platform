@@ -28,7 +28,7 @@ public class EnemyScriptV2 : MonoBehaviour
         RaycastHit2D hitWall = Physics2D.Raycast(originPoint.position, _dir, range);
         if (hitWall)
         {
-            if (hitWall.collider.CompareTag("Floor"))
+            if (hitWall.collider.CompareTag("Floor") || hitWall.collider.CompareTag("Enemy"))
             {
                 Flip();
                 speed *= -1;
