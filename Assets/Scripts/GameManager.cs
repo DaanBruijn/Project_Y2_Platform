@@ -51,6 +51,12 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         Debug.Log("Win");
-        SceneManager.LoadScene("Win");
+        SceneManager.LoadScene(5);
+    }
+    
+    public void Lose()
+    {
+        Debug.Log("Lose");
+        SceneManager.LoadScene(6);
     }
 }

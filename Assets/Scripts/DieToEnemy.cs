@@ -10,8 +10,7 @@ public class DieToEnemy : MonoBehaviour
             if (collision.gameObject.tag == "Enemy")
             {
                 Debug.Log("dead");
-                gameManager.Win();
+                gameManager.Lose();
             }
-
         }
 }
