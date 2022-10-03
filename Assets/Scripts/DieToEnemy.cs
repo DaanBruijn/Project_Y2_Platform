@@ -12,5 +12,12 @@ public class DieToEnemy : MonoBehaviour
                 Debug.Log("dead");
                 gameManager.Lose();
             }
+            else if (collision.gameObject.tag == "Obstacle")
+            {
+                Debug.Log("dead");
+                gameManager.Lose();
+            }
         }
+    
+    
 }
