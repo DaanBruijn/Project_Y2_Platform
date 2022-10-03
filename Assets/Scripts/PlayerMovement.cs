@@ -203,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Raycast naar links
         Debug.DrawLine(transform.position + new Vector3(-0.75f, 0.5f), transform.position + new Vector3(-0.75f, -0.95f), Color.blue);
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position + new Vector3(-0.73f, 0.5f), Vector2.down, 1.48f);
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position + new Vector3(-0.73f, 0.5f), Vector2.down, 1.40f);
         if (hitLeft)
         {
             if (hitLeft.collider.CompareTag("Floor") && !wallJumping)
@@ -226,7 +226,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Raycast naar rechts
         Debug.DrawLine(transform.position + new Vector3(0.73f, 0.5f), transform.position + new Vector3(0.73f, -0.95f), Color.blue);
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + new Vector3(0.73f, 0.5f), Vector2.down, 1.48f);
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + new Vector3(0.73f, 0.5f), Vector2.down, 1.40f);
         if (hitRight)
         {
             if (hitRight.collider.CompareTag("Floor") && !wallJumping)
