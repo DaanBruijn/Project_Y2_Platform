@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int score = 5;
+    public float score = 0f;
 
     public TextMeshProUGUI Scoretext;
     private GameObject textObject;
@@ -30,10 +30,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Scoretext.text = "     " + score;
         if (Input.GetKeyDown(KeyCode.K))
         {
             score += 15;
-            Scoretext.text = "Score: " + score;
         }
     }
     
