@@ -10,11 +10,21 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI Scoretext;
     private GameObject textObject;
+
+    // Player
+    [SerializeField]private PlayerMovement player;
+    private int lives;
+    public TextMeshProUGUI Livestext;
     
     
     // Start is called before the first frame update
     void Start()
     {
+        // Player
+        lives = player.playerLevelLives;
+        textObject = GameObject.Find("Livestext");
+        Livestext = textObject.GetComponent<TextMeshProUGUI>();
+
         //ScoreSystem
         textObject = GameObject.Find("Scoretext");
         Scoretext = textObject.GetComponent<TextMeshProUGUI>();
@@ -35,6 +45,9 @@ public class GameManager : MonoBehaviour
         {
             score += 15;
         }
+
+        lives = player.playerLevelLives;
+        Livestext.text = "     " + lives;
     }
     
     public void LoadNextScene()
