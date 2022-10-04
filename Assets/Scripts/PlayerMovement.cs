@@ -9,6 +9,15 @@ public class PlayerMovement : MonoBehaviour
     float inputX;
     float inputY;
 
+    [Header("GameManager")]
+    [SerializeField] private GameManager gameManager;
+
+    [Header("PlayerLives")]
+    public int playerLevelLives;
+    [SerializeField] private int playerGameLives;
+    [SerializeField] private bool invincible;
+
+
     [Header("Rigidbody")]
     [SerializeField] private Rigidbody2D rb;
     
@@ -25,6 +34,9 @@ public class PlayerMovement : MonoBehaviour
     
     [Header("Bools")]
     [SerializeField] private bool gameOver;
+    [SerializeField] private bool knockbackFromLeft;
+    [SerializeField] private bool knockbackFromRight;
+    [SerializeField] private bool knockedBack;
     [SerializeField] private bool isGrounded;
     [SerializeField] private bool groundPoundReady;
     [SerializeField] private bool isGroundPound;
@@ -69,20 +81,68 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!invincible)
+        {
+            if (playerLevelLives > 1)
+            {
+                if (collision.gameObject.tag == "Enemy")
+                {
+                    Debug.Log("Hit");
+                    playerLevelLives -= 1;
+                    KnockBackHit();
+                    StartCoroutine(invincibleTime(3));
+                }
+                else if (collision.gameObject.tag == "Obstacle")
+                {
+                    Debug.Log("Hit");
+                    playerLevelLives -= 1;
+                    KnockBackHit();
+                    StartCoroutine(invincibleTime(3));
+                }
+            }
+            else if (playerLevelLives == 1)
+            {
+                if (collision.gameObject.tag == "Enemy")
+                {
+                    gameManager.Lose();
+                }
+                else if (collision.gameObject.tag == "Obstacle")
+                {
+                    gameManager.Lose();
+                }
+            }
+        }
+        else if (collision.gameObject.tag == "DeathBox")
+        {
+            gameManager.Lose();
+        }
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
+    
     void Update()
     {
         inputX = Input.GetAxisRaw("Horizontal");
         inputY = Input.GetAxisRaw("Vertical");
 
-        if (gameOver == false && !isGroundPound && !wallJumping)
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            currentMovementSpeed = walkSpeed;
+            rb.velocity = new Vector2(0, 0);
+            rb.AddForce(new Vector2(7, 5), ForceMode2D.Impulse);
+            StartCoroutine(KnockedBackTime(2.5f));
+        }
+
+        if (gameOver == false && !isGroundPound && !wallJumping && !knockedBack)
         {
             // Movement Functions
+            
             Walking();
             Turning();
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
@@ -93,8 +153,8 @@ public class PlayerMovement : MonoBehaviour
             GroundPound();
 
             //Raycast wall detection
-            DetectWallLeft();
-            DetectWallRight();
+            DetectRaycastLeft();
+            DetectRaycastRight();
         }
     }
         // Movement Functions    
@@ -102,8 +162,11 @@ public class PlayerMovement : MonoBehaviour
         // Walking
     void Walking()
     {
-        Vector2 playerVelocity = new Vector2(inputX * currentMovementSpeed, rb.velocity.y);
-        rb.velocity = playerVelocity;
+        if (inputX != 0)
+        {
+            Vector2 playerVelocity = new Vector2(inputX * currentMovementSpeed, rb.velocity.y);
+            rb.velocity = playerVelocity;
+        }
     }
     void Turning()
     {
@@ -180,6 +243,36 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    void KnockBackHit()
+    {
+        if (knockbackFromLeft)
+        {
+            // laat de player naar rechts schieten
+            print("Schiet naar rechts");
+            currentMovementSpeed = walkSpeed;
+            rb.velocity = new Vector2(0, 0);
+            rb.AddForce(new Vector2(7, 5), ForceMode2D.Impulse);
+            StartCoroutine(KnockedBackTime(2.5f));
+        }
+        else if (knockbackFromRight)
+        {
+            // laat de player naar links schieten
+            print("Schiet naar rechts");
+            currentMovementSpeed = walkSpeed;
+            rb.velocity = new Vector2(0, 0);
+            rb.AddForce(new Vector2(-7, 5), ForceMode2D.Impulse);
+            StartCoroutine(KnockedBackTime(2.5f));
+        }
+        else
+        {
+            // laat de player recht omhoog schieten
+            print("Schiet naar boven");
+            currentMovementSpeed = walkSpeed;
+            rb.velocity = new Vector2(0, 0);
+            rb.AddForce(new Vector2(-2, 10), ForceMode2D.Impulse);
+            StartCoroutine(KnockedBackTime(2.5f));
+        }
+    }
 
     // Ground detect
     void DetectGround()
@@ -199,7 +292,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Raycasting
-    void DetectWallLeft()
+    void DetectRaycastLeft()
     {
         // Raycast naar links
         Debug.DrawLine(transform.position + new Vector3(-0.75f, 0.5f), transform.position + new Vector3(-0.75f, -0.95f), Color.blue);
@@ -216,13 +309,19 @@ public class PlayerMovement : MonoBehaviour
                     rb.velocity = playerVelocity;
                 }
             }
+            else if (hitLeft.collider.CompareTag("Enemy") || hitLeft.collider.CompareTag("Obstacle"))
+            {
+                print("hit enemy left");
+                knockbackFromLeft = true;
+            }
         }
         else
         {
             leftWallSlide = false;
+            knockbackFromLeft = false;
         }
     }
-    void DetectWallRight()
+    void DetectRaycastRight()
     {
         // Raycast naar rechts
         Debug.DrawLine(transform.position + new Vector3(0.73f, 0.5f), transform.position + new Vector3(0.73f, -0.95f), Color.blue);
@@ -239,12 +338,20 @@ public class PlayerMovement : MonoBehaviour
                     rb.velocity = playerVelocity;
                 }
             }
+            else if (hitRight.collider.CompareTag("Enemy") || hitRight.collider.CompareTag("Obstacle"))
+            {
+                print("hit enemy Right");
+                knockbackFromRight = true;
+            }
         }
+        
         else
         {
             rightWallSlide = false;
+            knockbackFromRight = false;
         }
     }
+
 
 
         // Makes you wait midair before you ground pound
@@ -274,5 +381,17 @@ public class PlayerMovement : MonoBehaviour
         {
             yield return new WaitForSeconds(delay);
             wallJumping = false;
+        }
+        IEnumerator invincibleTime(float time)
+        {
+            invincible = true;
+            yield return new WaitForSeconds(time);
+            invincible = false;
+        }
+        IEnumerator KnockedBackTime(float time)
+        {
+            knockedBack = true;
+            yield return new WaitForSeconds(time);
+            knockedBack = false;
         }
 }
