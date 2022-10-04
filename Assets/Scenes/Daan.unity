@@ -152,7 +152,7 @@ Transform:
   m_Children:
   - {fileID: 1888688418}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &474001383
 GameObject:
@@ -801,7 +801,7 @@ Transform:
   - {fileID: 2121837004}
   - {fileID: 1308960100}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1068482289
 GameObject:
@@ -834,6 +834,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f2e1be1d45b884697540c53022870d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 3
 --- !u!61 &1068482291
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1032,7 +1033,7 @@ Transform:
   m_LocalScale: {x: 1129.5521, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1083524668
 GameObject:
@@ -8317,6 +8318,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8af1e419bb3d9dd4b892804a018fea00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  playerLevelLives: 0
+  playerGameLives: 0
+  invincible: 0
   rb: {fileID: 0}
   currentMovementSpeed: 5
   walkSpeed: 5
@@ -8326,6 +8331,9 @@ MonoBehaviour:
   maxJumps: 2
   jumpAmount: 2
   gameOver: 0
+  knockbackFromLeft: 0
+  knockbackFromRight: 0
+  knockedBack: 0
   isGrounded: 0
   groundPoundReady: 0
   isGroundPound: 0
@@ -8446,7 +8454,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1548485378
 GameObject:
@@ -8576,7 +8584,7 @@ Transform:
   - {fileID: 1083524669}
   - {fileID: 642079692}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1579527307
 GameObject:
@@ -8609,6 +8617,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 5
   Scoretext: {fileID: 0}
+  player: {fileID: 0}
+  Livestext: {fileID: 0}
 --- !u!4 &1579527309
 Transform:
   m_ObjectHideFlags: 0
@@ -8716,7 +8726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b14df199eb0ad4ca73ade0bd29b357, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1526943271}
+  target: {fileID: 0}
   offset: {x: 0, y: 0, z: -10}
 --- !u!81 &1800120373
 AudioListener:

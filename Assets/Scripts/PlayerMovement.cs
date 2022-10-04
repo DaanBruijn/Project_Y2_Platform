@@ -162,7 +162,7 @@ public class PlayerMovement : MonoBehaviour
         // Walking
     void Walking()
     {
-        if (inputX != 0)
+        if (!knockedBack)
         {
             Vector2 playerVelocity = new Vector2(inputX * currentMovementSpeed, rb.velocity.y);
             rb.velocity = playerVelocity;
