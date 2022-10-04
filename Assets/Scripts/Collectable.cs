@@ -22,7 +22,7 @@ public class Collectable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         soundManager.PlayGoodSound();
-        gameManager.IncreaseScore(scoreToAdd);
+        // gameManager.IncreaseScore(scoreToAdd);
         Destroy(gameObject);
     }
 }
