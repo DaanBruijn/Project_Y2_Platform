@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
             currentMovementSpeed = walkSpeed;
             rb.velocity = new Vector2(0, 0);
             rb.AddForce(new Vector2(7, 5), ForceMode2D.Impulse);
-            StartCoroutine(KnockedBackTime(2.5f));
+            StartCoroutine(KnockedBackTime(1.5f));
         }
 
         if (gameOver == false && !isGroundPound && !wallJumping && !knockedBack)
@@ -241,7 +241,7 @@ public class PlayerMovement : MonoBehaviour
             currentMovementSpeed = walkSpeed;
             rb.velocity = new Vector2(0, 0);
             rb.AddForce(new Vector2(7, 5), ForceMode2D.Impulse);
-            StartCoroutine(KnockedBackTime(2.5f));
+            StartCoroutine(KnockedBackTime(1.5f));
         }
         else if (knockbackFromRight)
         {
@@ -250,7 +250,7 @@ public class PlayerMovement : MonoBehaviour
             currentMovementSpeed = walkSpeed;
             rb.velocity = new Vector2(0, 0);
             rb.AddForce(new Vector2(-7, 5), ForceMode2D.Impulse);
-            StartCoroutine(KnockedBackTime(2.5f));
+            StartCoroutine(KnockedBackTime(1.5f));
         }
         else
         {
@@ -259,7 +259,7 @@ public class PlayerMovement : MonoBehaviour
             currentMovementSpeed = walkSpeed;
             rb.velocity = new Vector2(0, 0);
             rb.AddForce(new Vector2(-2, 10), ForceMode2D.Impulse);
-            StartCoroutine(KnockedBackTime(2.5f));
+            StartCoroutine(KnockedBackTime(1.5f));
         }
     }
 
