@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool gameOver;
     [SerializeField] private bool knockbackFromLeft;
     [SerializeField] private bool knockbackFromRight;
-    [SerializeField] private bool knockedBack;
+    [SerializeField] public bool knockedBack;
     [SerializeField] private bool isGrounded;
     [SerializeField] private bool groundPoundReady;
     [SerializeField] private bool isGroundPound;

@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Obstacle
   - DeathBox
+  - PlayerDetect
   layers:
   - Default
   - TransparentFX
