@@ -10,6 +10,8 @@ public class CountdownTimer : MonoBehaviour
     private GameObject timeObject;
     public bool onGoing = true;
     public GameManager GM;
+    public bool GameEnded = false;
+    private bool GameEnding = false;
     //GameObject score = GameObject.Find("GameManager");
     //public int exscore;
     // Start is called before the first frame update
@@ -24,23 +26,13 @@ public class CountdownTimer : MonoBehaviour
     void Update()
     {
         Timeleft.text = "     " + Mathf.Round(timeLeft);
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (onGoing)
-            {
-                onGoing = false;
-            }
-            else
-            {
-                onGoing = true;
-            }
-        }
         if (onGoing)
         {
         timeLeft -= Time.deltaTime;
         }
-        if (Input.GetKeyDown(KeyCode.E))
+        if (GameEnded && GameEnding == false)
         {
+            GameEnding = true;
             GM.score += Mathf.Round(timeLeft);
             onGoing = false;
         }

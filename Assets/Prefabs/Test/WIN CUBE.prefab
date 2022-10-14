@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4821205772236992533}
   - component: {fileID: 4821205772236992530}
   - component: {fileID: 4821205772236992531}
+  - component: {fileID: -3709941608429675039}
   m_Layer: 0
   m_Name: WIN CUBE
   m_TagString: Win
@@ -109,3 +110,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.040415, y: 9.033262}
   m_EdgeRadius: 0
+--- !u!114 &-3709941608429675039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4821205772236992528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c287f7e624dbd464ea10d6171125ee4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TMR: {fileID: 0}

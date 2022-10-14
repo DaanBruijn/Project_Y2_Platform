@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
             DetectGround();
             Jumping();
             isGrounded = false;
+            gameManager.score += 15;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
