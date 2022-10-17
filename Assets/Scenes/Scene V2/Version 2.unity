@@ -331,6 +331,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 6.02
       objectReference: {fileID: 0}
+    - target: {fileID: 3823162639676139689, guid: 634db3e479fbcd44ab16ac1e7619b06c, type: 3}
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3823162639676139690, guid: 634db3e479fbcd44ab16ac1e7619b06c, type: 3}
       propertyPath: m_TagString
       value: Obstacle
@@ -620,6 +624,10 @@ PrefabInstance:
     - target: {fileID: 3823162639439510348, guid: 634db3e479fbcd44ab16ac1e7619b06c, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 3823162639676139689, guid: 634db3e479fbcd44ab16ac1e7619b06c, type: 3}
+      propertyPath: speed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3823162639676139690, guid: 634db3e479fbcd44ab16ac1e7619b06c, type: 3}
       propertyPath: m_TagString
@@ -1086,6 +1094,7 @@ GameObject:
   - component: {fileID: 546056887}
   - component: {fileID: 546056886}
   - component: {fileID: 546056885}
+  - component: {fileID: 546056891}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -1135,6 +1144,7 @@ MonoBehaviour:
   playerLevelLives: 5
   playerGameLives: 5
   invincible: 0
+  animator: {fileID: 546056891}
   rb: {fileID: 0}
   currentMovementSpeed: 5
   walkSpeed: 5
@@ -1270,6 +1280,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &546056891
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546056884}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a67bc9b796adac643ae0316580df2b8f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &547644934
 GameObject:
   m_ObjectHideFlags: 0
