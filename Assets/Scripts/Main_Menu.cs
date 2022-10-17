@@ -10,6 +10,11 @@ public class Main_Menu : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
+    public void PlayAgain()
+    {
+        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+    }
+
     public void QuitGame ()
     {
         Debug.Log("QUIT!");
