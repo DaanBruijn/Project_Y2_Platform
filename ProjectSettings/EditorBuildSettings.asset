@@ -5,34 +5,25 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Daan.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Finn.unity
-    guid: 3298d7da00c1973409984ee29daa6274
+    path: Assets/Scenes/Scene V3/Start Scene.unity
+    guid: 4fa972d686cc0ff4ea936f58a1545a33
   - enabled: 1
-    path: Assets/Scenes/Win.unity
-    guid: bf684fa0d02956d4a9a062a608aff262
-  - enabled: 0
-    path: Assets/Scenes/Scene V1/Version1.unity
-    guid: 5eea9488a7322df448a8df74525e4347
+    path: Assets/Scenes/Scene V3/Level Select.unity
+    guid: a87635e6efea1e142824eb45612f2c0c
   - enabled: 1
-    path: Assets/Scenes/Scene V2/Start Screen.unity
-    guid: d1dbaf12bf0580942b8081caf728a3c0
+    path: Assets/Scenes/Scene V3/Death Scene.unity
+    guid: 4a704f56b643cb140ad75fd43d0c0264
   - enabled: 1
-    path: Assets/Scenes/Scene V2/Version 2.unity
-    guid: 156b483940e10b84fa0df999733d2630
+    path: Assets/Scenes/Scene V3/Win Scene.unity
+    guid: 9e41d4cc4fd53e84e9c7e2b4f280ade1
   - enabled: 1
-    path: Assets/Scenes/Scene V2/Version 2 Level2.unity
-    guid: cb9fa88ec455fd14f83bc648a899b712
+    path: Assets/Scenes/Scene V3/Level 1.unity
+    guid: dfac97b7b1efa63478522cfcd55dc034
   - enabled: 1
-    path: Assets/Scenes/Scene V2/WinScreen.unity
-    guid: 692dddab4a4a86b45a84ad83230d6e46
+    path: Assets/Scenes/Scene V3/Level 2.unity
+    guid: 81e688d1ccbc22f4f987ef790159fcbc
   - enabled: 1
-    path: Assets/Scenes/Scene V2/DeathScreen.unity
-    guid: 85fea4af58f65094583da5eaa579f7d1
-  - enabled: 1
-    path: Assets/Scenes/Scene V2/Level Select.unity
-    guid: 98fe9d6bb59bf2345a1076936aa363e3
+    path: Assets/Scenes/Scene V3/Level 3.unity
+    guid: 5908d692582dc1d4f921cb29471a55a4
   m_configObjects: {}

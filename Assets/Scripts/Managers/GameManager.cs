@@ -55,21 +55,16 @@ public class GameManager : MonoBehaviour
         //This will load the next scene in the build settings (edit with ctrl + shift + b)
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1);
     }
-    
-    public void PlayAgain()
-    {
-        SceneManager.LoadScene("Finn");
-    }
-    
+
     public void Win()
     {
         Debug.Log("Win");
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene(3);
     }
     
     public void Lose()
     {
         Debug.Log("Lose");
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(2);
     }
 }

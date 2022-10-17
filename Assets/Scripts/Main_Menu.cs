@@ -5,29 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class Main_Menu : MonoBehaviour
 {
+    public int levelSelect;
+    
     public void PlayGame ()
-    {
-        SceneManager.LoadScene(3);
-    }
-
-    public void LevelSelect ()
-    {
-        SceneManager.LoadScene(7);
-    }
-
-    public void Level1()
-    {
-        SceneManager.LoadScene(3);
-    }
-
-    public void level2()
     {
         SceneManager.LoadScene(4);
     }
 
+    public void LevelSelect ()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void LevelSelector()
+    {
+        SceneManager.LoadScene(levelSelect);
+    }
+    
     public void MainMenu ()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(0);
     }
 
     public void QuitGame ()
