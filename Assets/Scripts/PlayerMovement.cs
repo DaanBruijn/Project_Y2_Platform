@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool invincible;
 
 
+    [Header("Animator")]
+    [SerializeField]private Animator animator;
+
     [Header("Rigidbody")]
     [SerializeField] private Rigidbody2D rb;
     
@@ -69,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             DetectGround();
             Jumping();
+            animator.SetBool("jumping", true);
             isGrounded = false;
         }
     }
@@ -77,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Floor"))
         {
             isGrounded = false;
+            animator.SetBool("grounded", false);
             StartCoroutine(WallSlideDelay(0.2f));
         }
     }
@@ -140,21 +145,34 @@ public class PlayerMovement : MonoBehaviour
             }
             Sprinting();
             GroundPound();
-
-            //Raycast wall detection
-            DetectRaycastLeft();
-            DetectRaycastRight();
+            AnimatorBoolCheck();
+            
         }
     }
-        // Movement Functions    
 
-        // Walking
+    private void LateUpdate()
+    {
+        //Raycast wall detection
+        DetectRaycastLeft();
+        DetectRaycastRight();
+    }
+    // Movement Functions    
+
+    // Walking
     void Walking()
     {
         if (!knockedBack)
         {
             Vector2 playerVelocity = new Vector2(inputX * currentMovementSpeed, rb.velocity.y);
             rb.velocity = playerVelocity;
+        }
+        if (inputX != 0 && isGrounded)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
         }
     }
     void Turning()
@@ -179,9 +197,11 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Force);
             jumpAmount = jumpAmount - 1;
             isGrounded = false;
+            animator.SetBool("grounded", false);
             StartCoroutine(GroundPoundJumpDelay(0.1f));
             StartCoroutine(WallSlideDelay(0.5f));
         }
+        
 
         //Wall Jump
 
@@ -193,6 +213,7 @@ public class PlayerMovement : MonoBehaviour
             wallJumping = true;
             rb.velocity = new Vector2(-currentMovementSpeed, 10);
             StartCoroutine(WallJumpTimer(0.5f));
+            animator.SetBool("wallSliding", false);
         }
 
         //Left Wall
@@ -203,8 +224,38 @@ public class PlayerMovement : MonoBehaviour
             wallJumping = true;
             rb.velocity = new Vector2(currentMovementSpeed, 10);
             StartCoroutine(WallJumpTimer(0.5f));
+            animator.SetBool("wallSliding", false);
         }
     } 
+    void AnimatorBoolCheck()
+    {
+        if (jumpAmount == 0 && animator.GetBool("jumping") && !isGrounded)
+        {
+            animator.SetBool("doubleJumping", true);
+            animator.SetBool("falling", false);
+
+        }
+        else
+        {
+            animator.SetBool("doubleJumping", false);
+        }
+
+        if (rb.velocity.y > 2)
+        {
+            animator.SetBool("jumping", true);
+            animator.SetBool("falling", false);
+        }
+        else if (rb.velocity.y < -2)
+        {
+            animator.SetBool("jumping", false);
+            animator.SetBool("falling", true);
+        }
+        else
+        {
+            animator.SetBool("falling", false);
+        }
+        
+    }
     void Sprinting()
     {
         if (isGrounded == true)
@@ -219,6 +270,8 @@ public class PlayerMovement : MonoBehaviour
             currentMovementSpeed = walkSpeed;
         }
     }
+
+
     void GroundPound()
     {
         if (isGrounded == false)
@@ -228,6 +281,8 @@ public class PlayerMovement : MonoBehaviour
                 currentMovementSpeed = walkSpeed;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 isGroundPound = true;
+                animator.Play("Fall");
+                animator.SetBool("groundPound", true);
                 StartCoroutine(GroundPoundTime(0.3f));
             }
         }
@@ -266,11 +321,15 @@ public class PlayerMovement : MonoBehaviour
     // Ground detect
     void DetectGround()
     {
+        print("ground");
         jumpAmount = maxJumps;
         isGrounded = true;
         wallSlideReady = false;
         leftWallSlide = false;
         rightWallSlide = false;
+        animator.SetBool("grounded", true);
+        animator.SetBool("groundPound", false);
+        animator.SetBool("jumping", false);
         if (isGroundPound == true)
         {
             isGroundPound = false;
@@ -285,9 +344,10 @@ public class PlayerMovement : MonoBehaviour
     {
         // Raycast naar links
         Debug.DrawLine(transform.position + new Vector3(-0.75f, 0.5f), transform.position + new Vector3(-0.75f, -0.95f), Color.blue);
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position + new Vector3(-0.73f, 0.5f), Vector2.down, 1.40f);
+        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position + new Vector3(-0.73f, 0.5f), Vector2.down, 1.4f);
         if (hitLeft)
         {
+            print("Hit left");
             if (hitLeft.collider.CompareTag("Floor") && !wallJumping)
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
@@ -296,6 +356,8 @@ public class PlayerMovement : MonoBehaviour
                     leftWallSlide = true;
                     Vector2 playerVelocity = new Vector2(0, -wallSlideSpeed);
                     rb.velocity = playerVelocity;
+                    print("Wallslide");
+                    animator.SetBool("wallSliding", true);
                 }
             }
             else if (hitLeft.collider.CompareTag("Enemy") || hitLeft.collider.CompareTag("Obstacle"))
@@ -308,15 +370,18 @@ public class PlayerMovement : MonoBehaviour
         {
             leftWallSlide = false;
             knockbackFromLeft = false;
+            animator.SetBool("wallSliding", false);
+
         }
     }
     void DetectRaycastRight()
     {
         // Raycast naar rechts
         Debug.DrawLine(transform.position + new Vector3(0.73f, 0.5f), transform.position + new Vector3(0.73f, -0.95f), Color.blue);
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + new Vector3(0.73f, 0.5f), Vector2.down, 1.40f);
+        RaycastHit2D hitRight = Physics2D.Raycast(transform.position + new Vector3(0.73f, 0.5f), Vector2.down, 1.4f);
         if (hitRight)
         {
+            print("Hit right");
             if (hitRight.collider.CompareTag("Floor") && !wallJumping)
             {
                 rb.velocity = new Vector2(0, rb.velocity.y);
@@ -325,6 +390,7 @@ public class PlayerMovement : MonoBehaviour
                     rightWallSlide = true;
                     Vector2 playerVelocity = new Vector2(0, -wallSlideSpeed);
                     rb.velocity = playerVelocity;
+                    animator.SetBool("wallSliding", true);
                 }
             }
             else if (hitRight.collider.CompareTag("Enemy") || hitRight.collider.CompareTag("Obstacle"))
@@ -338,6 +404,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rightWallSlide = false;
             knockbackFromRight = false;
+            
         }
     }
 
@@ -380,7 +447,10 @@ public class PlayerMovement : MonoBehaviour
         IEnumerator KnockedBackTime(float time)
         {
             knockedBack = true;
+            animator.SetBool("gotHit", true);
             yield return new WaitForSeconds(time);
+            animator.SetBool("gotHit", false);
+            animator.Play("Idle");
             knockedBack = false;
         }
 }
