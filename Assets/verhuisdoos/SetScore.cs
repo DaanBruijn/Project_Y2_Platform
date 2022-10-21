@@ -13,7 +13,6 @@ public class SetScore : MonoBehaviour
     {
         score.text = "Score: " + PlayerPrefs.GetInt("score");
         time.text = "Time: " + PlayerPrefs.GetFloat("time");
-        iets.text = "Iets anders: " + PlayerPrefs.GetFloat("iets anders");
     }
 
     // Update is called once per frame
