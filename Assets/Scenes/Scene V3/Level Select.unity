@@ -989,7 +989,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1498597207}
+      - m_Target: {fileID: 836666715}
         m_TargetAssemblyTypeName: Main_Menu, Assembly-CSharp
         m_MethodName: LevelSelector
         m_Mode: 1
@@ -2308,7 +2308,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1498597207}
+      - m_Target: {fileID: 1976416104}
         m_TargetAssemblyTypeName: Main_Menu, Assembly-CSharp
         m_MethodName: LevelSelector
         m_Mode: 1
