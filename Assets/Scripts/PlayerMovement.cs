@@ -13,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private GameManager gameManager;
 
     [Header("PlayerLives")]
-    public int playerLevelLives;
-    [SerializeField] private int playerGameLives;
+    public int playerLevelLives = 5;
+    [SerializeField] private int playerGameLives = 5;
     [SerializeField] public bool invincible;
 
 
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float currentMovementSpeed;
     [SerializeField] private float walkSpeed;
     [SerializeField] private float sprintSpeed;
-    [SerializeField] private float wallSlideSpeed;
+    [SerializeField] private float wallSlideSpeed = 1;
 
     [Header("Jumps")]
     [SerializeField] private float jumpPower;
@@ -199,6 +199,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(0, 0, 0);
             rb.AddForce(new Vector2(0, jumpPower + jumpPowerMultiplier), ForceMode2D.Force);
+            gameManager.soundManager.PlayJumpSound();
             jumpAmount = jumpAmount - 1;
             isGrounded = false;
             animator.SetBool("grounded", false);
@@ -282,6 +283,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.S) && groundPoundReady == true)
             {
+                gameManager.soundManager.PlayGroundPound();
                 currentMovementSpeed = walkSpeed;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 isGroundPound = true;
@@ -340,6 +342,7 @@ public class PlayerMovement : MonoBehaviour
             groundPoundFall = false;
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            gameManager.soundManager.PlayThud();
         }
     }
 

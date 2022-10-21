@@ -9,6 +9,7 @@ public class MeleeKill : MonoBehaviour
     [SerializeField]private bool canWallKick;
     [SerializeField]private float kickBounceBack;
     [SerializeField]private float kickBounceUp;
+    [SerializeField]private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class MeleeKill : MonoBehaviour
         Debug.LogWarning(other.gameObject.tag);
         if (other.gameObject.tag == "Enemy")
         {
+            gameManager.IncreaseScore(15);
             Debug.LogWarning("killed enemy :(" + other.gameObject.tag);
             //called when an enemy is hit by melee attack
             Destroy(other.gameObject);

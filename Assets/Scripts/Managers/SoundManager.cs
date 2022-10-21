@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource jumpSound;
     public AudioSource thud;
     public AudioSource groundPound;
+    public AudioSource badSound;
 
     // play the coin sound
     public void PlayGoodSound()
@@ -28,5 +29,10 @@ public class SoundManager : MonoBehaviour
     public void PlayGroundPound()
     {
         groundPound.Play();
+    }
+
+     public void PlayBadSound()
+    {
+        badSound.Play();
     }
 }

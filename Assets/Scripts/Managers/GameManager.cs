@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     private int lives;
     public TextMeshProUGUI Livestext;
 
+    public SoundManager soundManager;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -59,9 +61,7 @@ public class GameManager : MonoBehaviour
         Scoretext.text = "     " + score;
 
         lives = player.playerLevelLives;
-        Livestext.text = "     " + lives;
-
-        Debug.Log(PlayerPrefs.GetFloat("score"));
+        Livestext.text = "     " + lives;        
     }
     
     public void LoadNextScene()
