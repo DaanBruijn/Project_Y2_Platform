@@ -30,7 +30,7 @@ public class ProjectileScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("colided");
+        Debug.Log("colided with" + other.gameObject.tag);
         if (other.gameObject.tag == "Floor")
         {
             Destroy(gameObject); 

@@ -126,6 +126,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        originalMaxJumps = maxJumps;
     }
     
     void Update()
@@ -202,7 +203,7 @@ public class PlayerMovement : MonoBehaviour
         if (jumpAmount >= 1 && (!rightWallSlide && !leftWallSlide))
         {
             rb.velocity = new Vector3(0, 0, 0);
-            rb.AddForce(new Vector2(0, jumpPower), ForceMode2D.Force);
+            rb.AddForce(new Vector2(0, jumpPower + jumpPowerMultiplier), ForceMode2D.Force);
             jumpAmount = jumpAmount - 1;
             isGrounded = false;
             animator.SetBool("grounded", false);
