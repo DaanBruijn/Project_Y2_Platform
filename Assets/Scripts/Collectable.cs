@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
-    public int scoreToAdd = 5;
+    public float scoreToAdd = 5;
     private SoundManager soundManager;
     private GameManager gameManager;
     // Start is called before the first frame update
@@ -22,7 +22,7 @@ public class Collectable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         soundManager.PlayGoodSound();
-        // gameManager.IncreaseScore(scoreToAdd);
+        gameManager.IncreaseScore(scoreToAdd);
         Destroy(gameObject);
     }
 }

@@ -57,11 +57,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public bool projectileShooter;
     [SerializeField] public bool allowedMelee = true;
 
-
-
-
-
-
     [Header("Raycast")]
     [SerializeField] private Transform lookDirection;
 
@@ -81,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
             Jumping();
             animator.SetBool("jumping", true);
             isGrounded = false;
-            gameManager.score += 15;
+            gameManager.IncreaseScore(15);
         }
     }
     private void OnTriggerExit2D(Collider2D other)

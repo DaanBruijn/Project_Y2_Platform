@@ -33,7 +33,7 @@ public class CountdownTimer : MonoBehaviour
         if (GameEnded && GameEnding == false)
         {
             GameEnding = true;
-            GM.score += Mathf.Round(timeLeft);
+            GM.IncreaseScore(Mathf.Round(timeLeft));
             onGoing = false;
         }
         if ( timeLeft < 0 )

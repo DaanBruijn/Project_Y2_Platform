@@ -48,7 +48,7 @@ public class GameManager : MonoBehaviour
 
         //EndScreen
         Debug.Log("im GameManager");
-        PlayerPrefs.SetInt("score",5);
+        PlayerPrefs.SetFloat("score",score);
         PlayerPrefs.SetFloat("time",10.50f);
         PlayerPrefs.SetFloat("iets anders", PlayerPrefs.GetFloat("iets anders") + 1);
     }
@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
 
         lives = player.playerLevelLives;
         Livestext.text = "     " + lives;
+
+        Debug.Log(PlayerPrefs.GetFloat("score"));
     }
     
     public void LoadNextScene()
@@ -79,5 +81,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("Lose");
         SceneManager.LoadScene(2);
         currentSceneName = SceneManager.GetActiveScene().name;
+    }
+
+    public void IncreaseScore(float value)
+    {
+        score += value;
+        PlayerPrefs.SetFloat("score",score);
     }
 }
