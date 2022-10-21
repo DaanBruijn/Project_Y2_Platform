@@ -15,14 +15,14 @@ public class PlayerMovement : MonoBehaviour
     [Header("PlayerLives")]
     public int playerLevelLives;
     [SerializeField] private int playerGameLives;
-    [SerializeField] private bool invincible;
+    [SerializeField] public bool invincible;
 
 
     [Header("Animator")]
     [SerializeField]private Animator animator;
 
     [Header("Rigidbody")]
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] public Rigidbody2D rb;
     
     [Header("Movement-Speeds")]
     [SerializeField] private float currentMovementSpeed;
@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private float maxJumps;
     [SerializeField] private float jumpAmount;
+    [SerializeField] private float originalMaxJumps;
+    [SerializeField] private float jumpPowerMultiplier = 1;
     
     [Header("Bools")]
     [SerializeField] private bool gameOver;
@@ -49,6 +51,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool rightWallSlide;
     [SerializeField] private bool wallJumping;
     [SerializeField] private bool wallJumpFalling;
+
+    [SerializeField] public bool superJump;
+    [SerializeField] public bool extraJumps;
+    [SerializeField] public bool projectileShooter;
+    [SerializeField] public bool allowedMelee = true;
 
 
 
@@ -454,4 +461,70 @@ public class PlayerMovement : MonoBehaviour
             animator.Play("Idle");
             knockedBack = false;
         }
+
+        public void Invincibility(int duration)
+    {
+        Debug.Log("invincible");
+        invincible = true;
+
+        //starts InvincibilityEnd after the set duration
+        Invoke("InvincibilityEnd", duration);
+    }
+
+    public void InvincibilityEnd()
+    {
+        invincible = false;
+        Debug.Log("invincibleOver");
+    }
+
+    public void SuperJump(int duration, float power)
+    {
+        Debug.Log("superjump");
+        superJump = true;
+        jumpPowerMultiplier = power;
+
+        //starts InvincibilityEnd after the set duration
+        Invoke("SuperJumpEnd", duration);
+    }
+
+    public void SuperJumpEnd()
+    {
+        superJump = false;
+        Debug.Log("no more big :(");
+        jumpPowerMultiplier = 1;
+    }
+
+    public void ExtraJumps(int duration, float power)
+    {
+        Debug.Log("extrajumps");
+        extraJumps = true;
+        jumpAmount = power;
+        maxJumps = power;
+
+        //starts ExtraJumpsEnd after the set duration
+        Invoke("ExtraJumpsEnd", duration);
+    }
+
+    public void ExtraJumpsEnd()
+    {
+        extraJumps = false;
+        Debug.Log("no more extra jumps");
+        maxJumps = originalMaxJumps;
+    }
+
+    public void ProjectileShooter(int duration, float power)
+    {
+        Debug.Log("extrajumps");
+        projectileShooter = true;
+
+        //starts ProjectileShooterEnd after the set duration
+        Invoke("ProjectileShooterEnd", duration);
+    }
+
+    public void ProjectileShooterEnd()
+    {
+        //can also be called when for example a player gets hit
+        projectileShooter = false;
+        Debug.Log("projectile shooter over");
+    }
 }
