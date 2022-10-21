@@ -74,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
             Jumping();
             animator.SetBool("jumping", true);
             isGrounded = false;
+            gameManager.score += 15;
         }
     }
     private void OnTriggerExit2D(Collider2D other)

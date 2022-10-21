@@ -36,16 +36,16 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //ScoreSystem
+        textObject = GameObject.Find("Scoretext");
+        Scoretext = textObject.GetComponent<TextMeshProUGUI>();
+        Scoretext.text = "Score: " + score;
+
         // Player
         lives = player.playerLevelLives;
         textObject = GameObject.Find("Livestext");
         Livestext = textObject.GetComponent<TextMeshProUGUI>();
 
-        //ScoreSystem
-        textObject = GameObject.Find("Scoretext");
-        Scoretext = textObject.GetComponent<TextMeshProUGUI>();
-        Scoretext.text = "Score: " + score;
-        
         //EndScreen
         Debug.Log("im GameManager");
         PlayerPrefs.SetInt("score",5);
@@ -57,10 +57,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         Scoretext.text = "     " + score;
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            score += 15;
-        }
 
         lives = player.playerLevelLives;
         Livestext.text = "     " + lives;
