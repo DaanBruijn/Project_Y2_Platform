@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4586435618163863728}
   - component: {fileID: 4586435618163863729}
   - component: {fileID: 4586435618163863734}
-  - component: {fileID: 4586435618163863735}
+  - component: {fileID: 1253197103804960097}
   m_Layer: 0
   m_Name: Collectable
   m_TagString: Untagged
@@ -110,7 +110,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4586435618163863735
+--- !u!114 &1253197103804960097
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,4 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98428c42ba9d6dd40a1ee6700472311a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpecialCollectables: []
   NumberOfCollectables: 0
