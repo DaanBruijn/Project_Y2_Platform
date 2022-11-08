@@ -13,7 +13,10 @@ public class EnemyScriptJump : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private float speed;
     [SerializeField] private float JumpPower;
-    
+
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+
     private Vector2 _dir = new Vector2(-1, 0);
     private Rigidbody2D _rb;
     private bool hasJumped;
@@ -58,6 +61,25 @@ public class EnemyScriptJump : MonoBehaviour
         {
             hasJumped = false;
         }
+
+
+        // Check Velocity / Animation Bools
+        if (_rb.velocity.y >= -0.5f && _rb.velocity.y <= 0.5f)
+        {
+            animator.SetBool("jumping", false);
+            animator.SetBool("falling", false);
+        }
+        else if (_rb.velocity.y > 0.5f)
+        {
+            animator.SetBool("jumping", true);
+            animator.SetBool("falling", false);
+        }
+        else if (_rb.velocity.y < -0.5f)
+        {
+            animator.SetBool("jumping", false);
+            animator.SetBool("falling", true);
+        }
+
     }
 
     void FixedUpdate()
