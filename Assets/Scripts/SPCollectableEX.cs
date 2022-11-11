@@ -18,6 +18,9 @@ public class SPCollectableEX : MonoBehaviour
             PlayerPrefs.SetInt("Collectable1collected", 0);
             PlayerPrefs.SetInt("Collectable2collected", 0);
             PlayerPrefs.SetInt("Collectable3collected", 0);
+            PlayerPrefs.SetInt("Collectable4collected", 0);
+            PlayerPrefs.SetInt("Collectable5collected", 0);
+            PlayerPrefs.SetInt("Collectable6collected", 0);
         }
     }
 }

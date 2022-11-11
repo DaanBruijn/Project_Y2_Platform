@@ -31,6 +31,27 @@ public class SpecialCollectable : MonoBehaviour
                 gameObject.SetActive(false);
             }
         }
+        if (title == "Collectable4")
+        {
+            if (PlayerPrefs.GetInt("Collectable4collected") == 1)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+        if (title == "Collectable5")
+        {
+            if (PlayerPrefs.GetInt("Collectable5collected") == 1)
+            {
+                gameObject.SetActive(false);
+            }
+        }
+        if (title == "Collectable6")
+        {
+            if (PlayerPrefs.GetInt("Collectable6collected") == 1)
+            {
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -55,6 +76,21 @@ public class SpecialCollectable : MonoBehaviour
             else if (title == "Collectable3")
             {
                 PlayerPrefs.SetInt("Collectable3collected", 1);
+                Destroy(gameObject);
+            }
+            else if (title == "Collectable4")
+            {
+                PlayerPrefs.SetInt("Collectable4collected", 1);
+                Destroy(gameObject);
+            }
+            else if (title == "Collectable5")
+            {
+                PlayerPrefs.SetInt("Collectable5collected", 1);
+                Destroy(gameObject);
+            }
+            else if (title == "Collectable6")
+            {
+                PlayerPrefs.SetInt("Collectable6collected", 1);
                 Destroy(gameObject);
             }
         }
