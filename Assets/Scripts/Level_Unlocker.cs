@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Level_Unlocker : MonoBehaviour
 {
@@ -29,5 +30,6 @@ public class Level_Unlocker : MonoBehaviour
     public void levelReset()
     {
         PlayerPrefs.SetInt("ReachedLevel", 1);
+        SceneManager.LoadScene(7);
     }
 }
