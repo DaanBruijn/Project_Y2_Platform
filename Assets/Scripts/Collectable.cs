@@ -5,8 +5,8 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     public float scoreToAdd = 5;
-    private SoundManager soundManager;
-    private GameManager gameManager;
+    [SerializeField] private SoundManager soundManager;
+    [SerializeField] private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +21,11 @@ public class Collectable : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        soundManager.PlayGoodSound();
-        gameManager.IncreaseScore(scoreToAdd);
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            soundManager.PlayGoodSound();
+            gameManager.IncreaseScore(scoreToAdd);
+            Destroy(gameObject);
+        }   
     }
 }
