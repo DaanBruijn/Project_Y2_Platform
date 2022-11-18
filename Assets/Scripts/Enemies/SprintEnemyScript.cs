@@ -19,6 +19,9 @@ public class SprintEnemyScript : MonoBehaviour
     [SerializeField] private float playerRange;
     [SerializeField] private float speedMod;
 
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+
     private Vector2 _playerDir = new Vector2(-1, 0);
     private Vector2 _dir = new Vector2(-1, 0);
     private Rigidbody2D _rb;
@@ -71,10 +74,12 @@ public class SprintEnemyScript : MonoBehaviour
         {
             if (hitPlayer.collider.CompareTag("PlayerDetect"))
             {
+                animator.SetBool("DetectPlayer", true);
                 currentSpeed = speedMod;
             }
             else if (!hitPlayer.collider.CompareTag("PlayerDetect"))
             {
+                animator.SetBool("DetectPlayer", false);
                 currentSpeed = setSpeed;
             }
         }

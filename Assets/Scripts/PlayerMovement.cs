@@ -336,6 +336,7 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("grounded", true);
         animator.SetBool("groundPound", false);
         animator.SetBool("jumping", false);
+        animator.SetBool("wallSliding", false);
         if (isGroundPound == true)
         {
             isGroundPound = false;
