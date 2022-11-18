@@ -199,7 +199,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector3(0, 0, 0);
             rb.AddForce(new Vector2(0, jumpPower + jumpPowerMultiplier), ForceMode2D.Force);
-            gameManager.soundManager.PlayJumpSound();
+            //gameManager.soundManager.PlayJumpSound();
             jumpAmount = jumpAmount - 1;
             isGrounded = false;
             animator.SetBool("grounded", false);
@@ -283,7 +283,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.S) && groundPoundReady == true)
             {
-                gameManager.soundManager.PlayGroundPound();
+                //gameManager.soundManager.PlayGroundPound();
                 currentMovementSpeed = walkSpeed;
                 rb.constraints = RigidbodyConstraints2D.FreezeAll;
                 isGroundPound = true;
@@ -342,7 +342,7 @@ public class PlayerMovement : MonoBehaviour
             groundPoundFall = false;
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            gameManager.soundManager.PlayThud();
+            //gameManager.soundManager.PlayThud();
         }
     }
 
