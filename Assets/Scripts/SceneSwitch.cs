@@ -8,6 +8,6 @@ public class SceneSwitch : MonoBehaviour
 {
    public void ReloadScene()
    {
-      SceneManager.LoadScene(GameManager.Instance.currentSceneName);
+      LevelFade.Instance.FadeToLevel(GameManager.Instance.currentSceneName);
    }
 }
