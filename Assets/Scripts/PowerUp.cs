@@ -16,11 +16,14 @@ public class PowerUp : MonoBehaviour
     //boost is only used for jump boost
     //boost adds a set amount of force to the jump power 
     [SerializeField]private float boost;
+    [SerializeField]private bool respawns = false;
     private PlayerMovement playerMovement;
+    private SoundManager soundManager;
     // Start is called before the first frame update
     void Start()
     {
         playerMovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        soundManager = GameObject.Find("SoundManager").GetComponent<SoundManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -28,12 +31,18 @@ public class PowerUp : MonoBehaviour
         // you can put: || other.gameObject.tag == "Good-Projectile" after "Player" to make projectiles able to collect power ups
         if (other.gameObject.tag == "Player")
         {
+            if (respawns == true)
+            {
+                Invoke("Respawn", time);
+            }
+
+            soundManager.PlayGoodSound();
             if (type == 0)
             { 
                 if (playerMovement.invincible == false)
                 {
-                playerMovement.Invincibility(time);
-                Destroy(gameObject);
+                        playerMovement.Invincibility(time);
+                        gameObject.SetActive(false);
                 }
             }
 
@@ -42,7 +51,7 @@ public class PowerUp : MonoBehaviour
                 if (playerMovement.superJump == false )
                 {
                     playerMovement.SuperJump(time, boost);
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
                 }
             }
 
@@ -51,7 +60,7 @@ public class PowerUp : MonoBehaviour
                 if (playerMovement.extraJumps == false )
                 {
                     playerMovement.ExtraJumps(time, boost);
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
                 }
             }
 
@@ -60,9 +69,14 @@ public class PowerUp : MonoBehaviour
                 if (playerMovement.projectileShooter == false ) 
                 {
                     playerMovement.ProjectileShooter(time, boost);
-                    Destroy(gameObject);
+                    gameObject.SetActive(false);
                 }
             }
         }
+    }
+
+    private void Respawn()
+    {
+        gameObject.SetActive(true);
     }
 }
