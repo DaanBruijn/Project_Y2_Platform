@@ -6,25 +6,26 @@ using UnityEngine.SceneManagement;
 public class Main_Menu : MonoBehaviour
 {
     public int levelSelect;
+    public int levelToLoad;
     
     public void PlayGame ()
     {
-        SceneManager.LoadScene(4);
+        LevelFade.Instance.FadeToLevel(4);
     }
 
     public void LevelSelect ()
     {
-        SceneManager.LoadScene(1);
+        LevelFade.Instance.FadeToLevel(7);
     }
 
     public void LevelSelector()
     {
-        SceneManager.LoadScene(levelSelect);
+        LevelFade.Instance.FadeToLevel(levelSelect);
     }
     
     public void MainMenu ()
     {
-        SceneManager.LoadScene(0);
+        LevelFade.Instance.FadeToLevel(0);
     }
 
     public void QuitGame ()
