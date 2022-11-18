@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class LFScrollingBackground : MonoBehaviour
 {
-
     public float speed;
-
-    [SerializeField]
-    private Renderer bgRenderer;
+    
+    [SerializeField]private Renderer bgRenderer;
 
     void Update()
     {
