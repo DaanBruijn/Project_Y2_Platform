@@ -19,6 +19,7 @@ public class EnemyScriptJump : MonoBehaviour
 
     private Vector2 _dir = new Vector2(-1, 0);
     private Rigidbody2D _rb;
+    private PlayerMovement _pm;
     private bool hasJumped;
     
 
@@ -26,6 +27,7 @@ public class EnemyScriptJump : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _pm = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
 
     void Update()
@@ -34,7 +36,7 @@ public class EnemyScriptJump : MonoBehaviour
         RaycastHit2D hitWall = Physics2D.Raycast(originPoint.position, _dir, range);
         if (hitWall)
         {
-            if (hitWall.collider.CompareTag("Floor") || hitWall.collider.CompareTag("Enemy"))
+            if (hitWall.collider.CompareTag("Floor") || hitWall.collider.CompareTag("Enemy") || hitWall.collider.CompareTag("PlayerDetect") && _pm.knockedBack)
             {
                 Flip();
                 speed *= -1;
