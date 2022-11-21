@@ -28,13 +28,11 @@ public class Level_Unlocker : MonoBehaviour
                 levelButtons[i].interactable = false;
             }
         }
-
-        textPro.text = PlayerPrefs.GetInt("ReachedLevel", reachedLevel).ToString();
     }
 
     public void levelReset()
     {
         PlayerPrefs.SetInt("ReachedLevel", 1);
-        SceneManager.LoadScene(7);
+        LevelFade.Instance.FadeToLevel(1);
     }
 }

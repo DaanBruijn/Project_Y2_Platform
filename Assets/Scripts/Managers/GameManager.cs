@@ -73,13 +73,13 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         Debug.Log("Win");
-        SceneManager.LoadScene(3);
+        LevelFade.Instance.FadeToLevel(3);
     }
     
     public void Lose()
     {
         Debug.Log("Lose");
-        SceneManager.LoadScene(2);
+        LevelFade.Instance.FadeToLevel(2);
         currentSceneName = SceneManager.GetActiveScene().buildIndex;
     }
 

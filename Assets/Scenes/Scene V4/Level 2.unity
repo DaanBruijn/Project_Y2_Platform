@@ -972,15 +972,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 359941058}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.682545}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 23.052, y: 11.979, z: 1}
   m_Children: []
-  m_Father: {fileID: 564151456}
-  m_RootOrder: 1
+  m_Father: {fileID: 2029828376}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 943.45325, y: 541.99634}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &359941060
@@ -1228,7 +1228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d6433bfd7dd9247b381896ff4c27b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelUnlocker: 0
+  levelUnlocker: 3
 --- !u!50 &434383140
 Rigidbody2D:
   serializedVersion: 4
@@ -1490,7 +1490,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2029828376}
-  - {fileID: 359941059}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15410,6 +15409,7 @@ RectTransform:
   - {fileID: 481736754}
   - {fileID: 28092217}
   - {fileID: 227789134}
+  - {fileID: 359941059}
   m_Father: {fileID: 564151456}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

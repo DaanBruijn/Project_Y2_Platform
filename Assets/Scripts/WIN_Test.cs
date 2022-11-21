@@ -14,7 +14,7 @@ public class WIN_Test : MonoBehaviour
         {
             Debug.Log("Win Scene Load");
             PlayerPrefs.SetInt("ReachedLevel", levelUnlocker);
-            SceneManager.LoadScene(7);
+            LevelFade.Instance.FadeToLevel(1);
         }
     }
 }

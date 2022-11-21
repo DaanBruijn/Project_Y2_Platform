@@ -15,7 +15,7 @@ public class Main_Menu : MonoBehaviour
 
     public void LevelSelect ()
     {
-        LevelFade.Instance.FadeToLevel(7);
+        LevelFade.Instance.FadeToLevel(1);
     }
 
     public void LevelSelector()
