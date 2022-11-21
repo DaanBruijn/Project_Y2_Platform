@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI Scoretext;
     private GameObject textObject;
 
-    public string currentSceneName;
+    public int currentSceneName;
 
     // Player
     [SerializeField]private PlayerMovement player;
@@ -73,14 +73,14 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         Debug.Log("Win");
-        SceneManager.LoadScene(3);
+        LevelFade.Instance.FadeToLevel(3);
     }
     
     public void Lose()
     {
         Debug.Log("Lose");
-        SceneManager.LoadScene(2);
-        currentSceneName = SceneManager.GetActiveScene().name;
+        LevelFade.Instance.FadeToLevel(2);
+        currentSceneName = SceneManager.GetActiveScene().buildIndex;
     }
 
     public void IncreaseScore(float value)
