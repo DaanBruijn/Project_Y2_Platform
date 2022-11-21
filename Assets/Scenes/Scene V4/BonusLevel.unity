@@ -1509,7 +1509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d6433bfd7dd9247b381896ff4c27b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelUnlocker: 0
+  levelUnlocker: 4
 --- !u!61 &363152451
 BoxCollider2D:
   m_ObjectHideFlags: 0

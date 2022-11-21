@@ -35,4 +35,10 @@ public class Level_Unlocker : MonoBehaviour
         PlayerPrefs.SetInt("ReachedLevel", 1);
         LevelFade.Instance.FadeToLevel(1);
     }
+
+    public void fullUnlock()
+    {
+        PlayerPrefs.SetInt("ReachedLevel", 4);
+        LevelFade.Instance.FadeToLevel(1);
+    }
 }
