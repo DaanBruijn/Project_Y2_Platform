@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     
     public float score = 0f;
+    public int collectablesCollected = 0;
 
     public TextMeshProUGUI Scoretext;
     private GameObject textObject;
