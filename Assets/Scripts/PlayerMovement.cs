@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool knockbackFromLeft;
     [SerializeField] private bool knockbackFromRight;
     [SerializeField] public bool knockedBack;
+    [SerializeField] public bool isBouncing;
     [SerializeField] private bool isGrounded;
     [SerializeField] private bool groundPoundReady;
     [SerializeField] private bool isGroundPound;
@@ -165,7 +166,7 @@ public class PlayerMovement : MonoBehaviour
     // Walking
     void Walking()
     {
-        if (!knockedBack)
+        if (!knockedBack && !isBouncing)
         {
             Vector2 playerVelocity = new Vector2(inputX * currentMovementSpeed, rb.velocity.y);
             rb.velocity = playerVelocity;
