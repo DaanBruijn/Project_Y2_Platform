@@ -27,6 +27,11 @@ public class Main_Menu : MonoBehaviour
     {
         LevelFade.Instance.FadeToLevel(0);
     }
+    
+    public void AchievementScreen ()
+    {
+        LevelFade.Instance.FadeToLevel(9);
+    }
 
     public void QuitGame ()
     {

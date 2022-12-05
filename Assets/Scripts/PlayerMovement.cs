@@ -198,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
         // Jumping
         if (jumpAmount >= 1 && (!rightWallSlide && !leftWallSlide))
         {
-            rb.velocity = new Vector3(0, 0, 0);
+            rb.velocity = new Vector3(rb.velocity.x, 0, 0);
             rb.AddForce(new Vector2(0, jumpPower + jumpPowerMultiplier), ForceMode2D.Force);
             //gameManager.soundManager.PlayJumpSound();
             jumpAmount = jumpAmount - 1;
