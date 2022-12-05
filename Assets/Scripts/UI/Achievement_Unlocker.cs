@@ -17,4 +17,10 @@ public class Achievement_Unlocker : MonoBehaviour
             achievement_Desc[0].text = "He is saying that he is better then Taif.";
         }
     }
+
+    public void Reset()
+    {
+        PlayerPrefs.SetInt("Ach_Jess", 0);
+        LevelFade.Instance.FadeToLevel(0);
+    }
 }
