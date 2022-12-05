@@ -36625,9 +36625,9 @@ AudioSource:
   m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: bd9c18000af88334db98a98b9664ca5d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f46a3025da8167d4ebcc22c250a7af0c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -37208,6 +37208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 5
+  collectablesCollected: 0
   Scoretext: {fileID: 587072207}
   currentSceneName: 0
   player: {fileID: 2013078494}
@@ -37532,6 +37533,7 @@ MonoBehaviour:
   knockbackFromLeft: 0
   knockbackFromRight: 0
   knockedBack: 0
+  isBouncing: 0
   isGrounded: 0
   groundPoundReady: 0
   isGroundPound: 0
