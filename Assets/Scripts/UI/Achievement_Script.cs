@@ -14,12 +14,15 @@ public class Achievement_Script : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Animation with the Correct Text
-            achievementBoxText.text = achievement.achievementName;
-            AchievementManager.Instance.StartAnimation();
-            
-            //Sets Playerpref from ScriptableObject
-            PlayerPrefs.SetInt(achievement.playerPrefName, 1);
+            if (PlayerPrefs.GetInt(achievement.playerPrefName) == 0)
+            {
+                //Animation with the Correct Text
+                achievementBoxText.text = achievement.achievementName;
+                AchievementManager.Instance.StartAnimation();
+
+                //Sets Playerpref from ScriptableObject
+                PlayerPrefs.SetInt(achievement.playerPrefName, 1);
+            }
         }
     }
 }

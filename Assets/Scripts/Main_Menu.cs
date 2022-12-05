@@ -33,4 +33,11 @@ public class Main_Menu : MonoBehaviour
         Debug.Log("QUIT!");
         Application.Quit();
     }
+    
+    public void ResetAchievement()
+    {
+        PlayerPrefs.SetInt("Ach_Jess", 0);
+        PlayerPrefs.SetInt("Level1Secret", 0);
+        LevelFade.Instance.FadeToLevel(0);
+    }
 }
