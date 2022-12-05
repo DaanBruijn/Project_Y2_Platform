@@ -816,11 +816,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 734474989}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76e759e0afa7bd143a990120d06eef17, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e4f212fa499d9449a60f58273ecf577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  achievement_Text: []
-  achievement_Desc: []
+  levelSelect: 0
+  levelToLoad: 0
 --- !u!114 &734474992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -866,8 +866,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 734474991}
-        m_TargetAssemblyTypeName: Achievement_Unlocker, Assembly-CSharp
-        m_MethodName: Reset
+        m_TargetAssemblyTypeName: Main_Menu, Assembly-CSharp
+        m_MethodName: ResetAchievement
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 869266844}
   - component: {fileID: 869266843}
   m_Layer: 5
-  m_Name: Achievement_Text
+  m_Name: Achievement_Text(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1202,7 +1202,7 @@ GameObject:
   - component: {fileID: 1194917827}
   - component: {fileID: 1194917826}
   m_Layer: 5
-  m_Name: Achievement_Desc
+  m_Name: Achievement_Desc(1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

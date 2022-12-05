@@ -18,16 +18,9 @@ public class Achievement_Unlocker : MonoBehaviour
         }
         
         if (PlayerPrefs.GetInt("Level1Secret") == 1)
-        {
+        {           
             achievement_Text[1].text = "SECRET TUNNEL!";
             achievement_Desc[1].text = "Sokka is getting mad...";
         }
-    }
-
-    public void Reset()
-    {
-        PlayerPrefs.SetInt("Ach_Jess", 0);
-        PlayerPrefs.SetInt("Level1Secret", 0);
-        LevelFade.Instance.FadeToLevel(0);
     }
 }
