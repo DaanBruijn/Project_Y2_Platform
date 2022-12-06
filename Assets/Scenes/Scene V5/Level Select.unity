@@ -490,6 +490,7 @@ MonoBehaviour:
   - {fileID: 1706600137}
   - {fileID: 128467697}
   reachedLevel: 0
+  SecretLevel: {fileID: 539964534}
   textPro: {fileID: 0}
 --- !u!1 &270874118
 GameObject:

@@ -18,7 +18,7 @@ public class SpecialCollectable : MonoBehaviour
         Collectablestext = collectablesObject.GetComponent<TextMeshProUGUI>();
         
         Debug.Log("test1collected==" + PlayerPrefs.GetInt("Collectable1collected"));
-       if (title == "Collectable1")
+        if (title == "Collectable1")
         {
             if (PlayerPrefs.GetInt("Collectable1collected") == 1)
             {
