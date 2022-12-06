@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5069450138660330047}
   - component: {fileID: 5069450138660330040}
   - component: {fileID: 5069450138660330043}
-  - component: {fileID: 5069450138660330045}
   m_Layer: 0
   m_Name: Crusher
   m_TagString: Obstacle
@@ -170,17 +169,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7f927e3ae18ef54f81fc6abaa692f45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5069450138660330045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5069450138660330052}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06475f31f8b6bf14587c399be254fe1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
