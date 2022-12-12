@@ -11,8 +11,10 @@ public class SetScore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        time = GameObject.Find("Time_Text").GetComponent<TextMeshProUGUI>();
+        score = GameObject.Find("scoreText").GetComponent<TextMeshProUGUI>();
         score.text = "Score: " + PlayerPrefs.GetInt("score");
-        time.text = "Time: " + PlayerPrefs.GetFloat("time");
+        time.text = "Time: " + PlayerPrefs.GetInt("time");
     }
 
     // Update is called once per frame

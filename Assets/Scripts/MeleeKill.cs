@@ -13,7 +13,7 @@ public class MeleeKill : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class MeleeKill : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             gameManager.IncreaseScore(15);
-            Debug.LogWarning("killed enemy :(" + other.gameObject.tag);
+            Debug.LogWarning("killed enemy :(" + other.gameObject.tag + other.gameObject.name);
             //called when an enemy is hit by melee attack
             Destroy(other.gameObject);
         }
