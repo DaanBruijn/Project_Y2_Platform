@@ -21,6 +21,8 @@ public class MeleeKill : MonoBehaviour
     {
         offset = new Vector3(player.transform.localScale.x * 1.5f, 0, 0);
         transform.position = player.transform.position + offset;
+
+        gameObject.transform.localScale = new Vector3(0.2f * player.transform.localScale.x,0.3f,0.2f);
     }
 
     private void OnCollisionEnter2D(Collision2D other) 
