@@ -24,6 +24,6 @@ public class TutorialGuide : MonoBehaviour
     {
         GuideText.text = "Welcome to the tutorial level my name is Frosty and i will be your guide to help you get started";
         yield return new WaitForSeconds(7);
-        GuideText.text = "You can use the arrow keys or AD to move left and right and you can use W or Space bar to jump";
+        GuideText.text = "You can use the arrow keys or AD to move left and right";
     }
 }
