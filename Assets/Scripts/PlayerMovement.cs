@@ -45,11 +45,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public bool isBouncing;
     [SerializeField] private bool isGrounded;
     [SerializeField] private bool groundPoundReady;
-    [SerializeField] private bool isGroundPound;
+    public bool isGroundPound;
     [SerializeField] private bool groundPoundFall;
     [SerializeField] private bool wallSlideReady;
-    [SerializeField] private bool leftWallSlide;
-    [SerializeField] private bool rightWallSlide;
+    public bool leftWallSlide;
+    public bool rightWallSlide;
     [SerializeField] private bool wallJumping;
     [SerializeField] private bool wallJumpFalling;
 
