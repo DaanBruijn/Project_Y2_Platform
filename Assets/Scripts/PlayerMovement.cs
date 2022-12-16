@@ -280,7 +280,7 @@ public class PlayerMovement : MonoBehaviour
 
     void GroundPound()
     {
-        if (isGrounded == false)
+        if (isGrounded == false && !leftWallSlide && !rightWallSlide)
         {
             if (Input.GetKeyDown(KeyCode.S) && groundPoundReady == true)
             {
