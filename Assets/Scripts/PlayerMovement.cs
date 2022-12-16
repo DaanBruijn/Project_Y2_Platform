@@ -23,7 +23,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Rigidbody")]
     [SerializeField] public Rigidbody2D rb;
-    
+
+    [Header("SpriteRenderer")]
+    [SerializeField] private SpriteRenderer SpriteRend;
+
     [Header("Movement-Speeds")]
     [SerializeField] private float currentMovementSpeed;
     [SerializeField] private float walkSpeed;
@@ -45,11 +48,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public bool isBouncing;
     [SerializeField] private bool isGrounded;
     [SerializeField] private bool groundPoundReady;
-    [SerializeField] private bool isGroundPound;
+    public bool isGroundPound;
     [SerializeField] private bool groundPoundFall;
     [SerializeField] private bool wallSlideReady;
-    [SerializeField] private bool leftWallSlide;
-    [SerializeField] private bool rightWallSlide;
+    public bool leftWallSlide;
+    public bool rightWallSlide;
     [SerializeField] private bool wallJumping;
     [SerializeField] private bool wallJumpFalling;
 
@@ -123,6 +126,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         originalMaxJumps = maxJumps;
+        SpriteRend.flipX = true;
+        
     }
     
     void Update()
@@ -280,7 +285,7 @@ public class PlayerMovement : MonoBehaviour
 
     void GroundPound()
     {
-        if (isGrounded == false)
+        if (isGrounded == false && !leftWallSlide && !rightWallSlide)
         {
             if (Input.GetKeyDown(KeyCode.S) && groundPoundReady == true)
             {
