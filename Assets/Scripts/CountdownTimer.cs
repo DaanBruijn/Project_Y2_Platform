@@ -18,7 +18,7 @@ public class CountdownTimer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeLeft = 200;
+        
         timeObject = GameObject.Find("Timeleft");
         Timeleft = timeObject.GetComponent<TextMeshProUGUI>();
         //CountdownTimer exscore = score.GetComponent<GameManager>();
@@ -53,6 +53,7 @@ public class CountdownTimer : MonoBehaviour
 	        {
 	            onGoing = false;
 	            Debug.Log("you lose");
+                GM.Lose();
 	        }
         }
 
