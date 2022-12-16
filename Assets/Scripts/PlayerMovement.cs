@@ -23,7 +23,10 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Rigidbody")]
     [SerializeField] public Rigidbody2D rb;
-    
+
+    [Header("SpriteRenderer")]
+    [SerializeField] private SpriteRenderer SpriteRend;
+
     [Header("Movement-Speeds")]
     [SerializeField] private float currentMovementSpeed;
     [SerializeField] private float walkSpeed;
@@ -123,6 +126,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         originalMaxJumps = maxJumps;
+        SpriteRend.flipX = true;
+        
     }
     
     void Update()
