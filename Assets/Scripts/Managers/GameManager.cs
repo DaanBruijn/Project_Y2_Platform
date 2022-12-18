@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetInt("time", 200);
         IncreaseScore(0);
         //ScoreSystem
         textObject = GameObject.Find("Scoretext");
@@ -52,7 +53,6 @@ public class GameManager : MonoBehaviour
 
         //EndScreen
         Debug.Log("im GameManager");
-        PlayerPrefs.SetFloat("time",10.50f);
         PlayerPrefs.SetFloat("iets anders", PlayerPrefs.GetFloat("iets anders") + 1);
     }
 

@@ -10,6 +10,8 @@ public class Attacks : MonoBehaviour
     private PlayerMovement playerMovement;
     public float attackCooldownTime = 1;
     [SerializeField]private bool attackCooldown;
+    [SerializeField] private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +24,7 @@ public class Attacks : MonoBehaviour
         if (Input.GetKeyDown("l"))
         {
             Debug.Log("trying to kick");
-            if (playerMovement.allowedMelee == true && attackCooldown == false)
+            if (playerMovement.allowedMelee == true && attackCooldown == false && !playerMovement.leftWallSlide && !playerMovement.rightWallSlide && !playerMovement.isGroundPound)
             {   
                 MeleeAttack();
             }
@@ -49,6 +51,7 @@ public class Attacks : MonoBehaviour
     public void MeleeAttack()
     {
         attackHitBox.SetActive(true);
+        animator.SetBool("Attacking", true);
         Debug.Log("did a kick");
         attackCooldown = true;
         Invoke("MeleeEnd", 0.2f);
@@ -63,6 +66,7 @@ public class Attacks : MonoBehaviour
     void MeleeEnd()
     {
         attackHitBox.SetActive(false);
+        animator.SetBool("Attacking", false);
     }
 
 }
