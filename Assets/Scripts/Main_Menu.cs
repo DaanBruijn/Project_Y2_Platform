@@ -38,6 +38,11 @@ public class Main_Menu : MonoBehaviour
         LevelFade.Instance.FadeToLevel(10);
     }
 
+    public void OptionsScreen()
+    {
+        LevelFade.Instance.FadeToLevel(11);
+    }
+
     public void QuitGame ()
     {
         Debug.Log("QUIT!");
